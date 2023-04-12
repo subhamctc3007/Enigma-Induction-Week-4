@@ -48,7 +48,7 @@ with st.container():
                     st.image(picture, caption=caption)
         else:
             file = st.sidebar.file_uploader("Choose an Image", type=["png", "jpg", "jpeg", "webp"])
-            caption = st.sidebar.text_input('Caption: ', 'This is a Caption') # caption input
+            caption = st.sidebar.text_input('Caption for Image: ', 'This is a Caption') # caption input
             if file is not None and caption != "":
                 with media_column:
                     st.image(file, caption=caption)
@@ -59,13 +59,15 @@ with st.container():
         st.sidebar.write("Video")
         option = st.sidebar.selectbox('Choose..', ('Upload a Video', 'Capture a Video'))
         if option == 'Capture a Video':
-            frame_window = st.sidebar.image([])
+            frame_window = st.sidebar.empty()
             camera = cv2.VideoCapture(0)
 
             while option:
                 ret, frame = camera.read()
                 frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 frame_window.image(frame)
+
+                
             # st.sidebar.write("Loading..")
             # st.sidebar.write("Press 'r' to Start and Stop Recording")
             # # Recording a Video
