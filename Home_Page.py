@@ -30,7 +30,7 @@ with st.container():
     # Adding a Lottie Animation
     with lottie_column:
         st_lottie(lottie_coding, height=300, key="coding")
-    st.write("File you upload appers here: ")
+    st.write("File you upload appears here: ")
 
 # Main
 with st.container():
