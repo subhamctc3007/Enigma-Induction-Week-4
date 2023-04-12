@@ -27,10 +27,10 @@ with st.container():
         st.title("Hello There.. :wave:")
         st.subheader("I am Subham Mishra :smile:, from Dept of Electronics & Telecommunication Engg. I am really passionate about AI/ML and Web Developement. I would love to learn all about it.")
         st.write("This App has an option in sidebar to upload an Image or a Video and display it along with a provided caption")
-        st.write("File you upload appers here: ")
     # Adding a Lottie Animation
     with lottie_column:
         st_lottie(lottie_coding, height=300, key="coding")
+    st.write("File you upload appers here: ")
 
 # Main
 with st.container():
