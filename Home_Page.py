@@ -1,9 +1,8 @@
 import streamlit as st
 import requests
 from streamlit_lottie import st_lottie
-import cv2
 
-# creating the page
+# Page Configuration
 st.set_page_config(layout="wide", page_title="My App", page_icon=":frog:")
 
 # Function definitions
@@ -56,66 +55,12 @@ with st.container():
     # Showing the Video
     elif file_type == "Video":
         media_column, empty_column = st.columns((2,1))
-        st.sidebar.write("Video")
-        option = st.sidebar.selectbox('Choose..', ('Upload a Video', 'Capture a Video'))
-        if option == 'Capture a Video':
-            frame_window = st.sidebar.empty()
-            camera = cv2.VideoCapture(0)
-
-            while option:
-                ret, frame = camera.read()
-                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-                frame_window.image(frame)
-
-                
-            # st.sidebar.write("Loading..")
-            # st.sidebar.write("Press 'r' to Start and Stop Recording")
-            # # Recording a Video
-            # with media_column:
-            #     cap = cv2.VideoCapture(0)
-
-            #     height = 720
-            #     width = 1280
-            #     frame_rate = 30.0
-
-            #     cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
-            #     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
-
-            #     fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
-            #     writer = cv2.VideoWriter("Video.mp4", fourcc, frame_rate, (width, height))
-            #     recording = False
-
-            #     while True:
-            #         ret, frame = cap.read()
-            #         if ret:
-            #             cv2.imshow("Video", frame)
-            #             #st.sidebar.video(frame)
-            #             if recording:
-            #                 writer.write(frame)
-            #         key = cv2.waitKey(1)
-            #         if key == ord('r'):
-            #             recording = not recording
-            #             if recording:
-            #                 st.sidebar.write("Recording Started")
-            #                 print("Recording Started")
-            #             else:
-            #                 st.sidebar.write("Recording Stopped")
-            #                 print("Recording Started")
-            #                 break
-            #     cap.release()
-            #     writer.release()
-            #     cv2.destroyAllWindows()
-            #     caption = st.sidebar.text_input('Caption: ', 'This is a Caption')
-
-            #     file = open('Video.mp4', 'rb')
-            #     video_bytes = file.read()
-            #     st.video(video_bytes)
-        else:   
-            file = st.sidebar.file_uploader("Choose a Video", type=["mov", "mp4"])
-            caption = st.sidebar.text_input('Caption: ', 'This is a Caption') # caption input
-            if file is not None and caption != "":
-                with media_column:
-                    video_bytes = file.read()
-                    st.video(video_bytes)
-                    st.markdown(f"<center>{caption}</center>", unsafe_allow_html=True)
-                    st.balloons()
+        st.sidebar.write("Video")   
+        file = st.sidebar.file_uploader("Choose a Video", type=["mov", "mp4"])
+        caption = st.sidebar.text_input('Caption: ', 'This is a Caption') # caption input
+        if file is not None and caption != "":
+            with media_column:
+                video_bytes = file.read()
+                st.video(video_bytes)
+                st.markdown(f"<center>{caption}</center>", unsafe_allow_html=True)
+                st.balloons()
