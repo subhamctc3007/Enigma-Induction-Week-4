@@ -5,7 +5,7 @@ from streamlit_lottie import st_lottie
 # Page Configuration
 st.set_page_config(layout="wide", page_title="My App", page_icon=":frog:")
 
-# Function definitions
+# Function to add Lottie animation in page
 def load_lottieurl(url):
     r = requests.get(url)
     if r.status_code != 200:
@@ -16,7 +16,7 @@ def load_lottieurl(url):
 lottie_coding = load_lottieurl("https://assets7.lottiefiles.com/packages/lf20_4kx2q32n.json")
 file = 'Media/bicycle.webp'
 
-# Sidebar
+# Sidebar basics
 st.sidebar.write("Upload Your File")
 file_type = st.sidebar.radio("Choose file type", ("Image", "Video"))
 
